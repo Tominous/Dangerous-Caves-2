@@ -7,8 +7,6 @@ import com.github.evillootlye.caves.caverns.DepthTemperature;
 import com.github.evillootlye.caves.commands.Commander;
 import com.github.evillootlye.caves.configuration.Configuration;
 import com.github.evillootlye.caves.generator.CaveGenerator;
-import com.github.evillootlye.caves.generator.DefaultStructures;
-import com.github.evillootlye.caves.mobs.DefaultMobs;
 import com.github.evillootlye.caves.mobs.MobsManager;
 import com.github.evillootlye.caves.ticks.Dynamics;
 import com.github.evillootlye.caves.util.PlayerAttackedEvent;

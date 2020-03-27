@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.CustomMob;
+import com.github.evillootlye.caves.mobs.AbstractMob;
 import com.github.evillootlye.caves.util.Materials;
 import com.github.evillootlye.caves.util.PlayerAttackedEvent;
 import com.github.evillootlye.caves.util.Utils;
@@ -24,7 +24,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.List;
 
 @Configurable.Path("mobs.hexed-armor")
-public class HexedArmor extends CustomMob implements Listener, Configurable {
+public class HexedArmor extends AbstractMob implements Listener, Configurable {
     private static final PotionEffect INVISIBILITY = new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, false, false);
 
     private int weight;

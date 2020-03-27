@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.TickableMob;
+import com.github.evillootlye.caves.mobs.TickingMob;
 import com.github.evillootlye.caves.util.Locations;
 import com.github.evillootlye.caves.util.Materials;
 import com.github.evillootlye.caves.util.Utils;
@@ -21,7 +21,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 @Configurable.Path("mobs.lava-creeper")
-public class LavaCreeper extends TickableMob implements Configurable, Listener {
+public class LavaCreeper extends TickingMob implements Configurable, Listener {
     private static final PotionEffect FIRE_RESISTANCE = new PotionEffect(PotionEffectType.FIRE_RESISTANCE,
             Integer.MAX_VALUE, 1, false, false);
     private int weight;

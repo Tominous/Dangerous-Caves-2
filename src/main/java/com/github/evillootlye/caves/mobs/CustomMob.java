@@ -8,48 +8,31 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.persistence.PersistentDataType;
 
-public abstract class CustomMob {
-    private static final NamespacedKey KEY = new NamespacedKey(DangerousCaves.PLUGIN, "mob-type");
-    private final EntityType type;
-    private final String id;
+public interface CustomMob {
+    NamespacedKey MOB_TYPE_KEY = new NamespacedKey(DangerousCaves.PLUGIN, "mob-type");
+//  NamespacedKey MOB_TYPE_KEY = new NamespacedKey("dangerouscaves", "mob-type");
 
-    public CustomMob(EntityType base, String id) {
-        this.type = base.isAlive() ? base : EntityType.ZOMBIE;
-        this.id = id;
-    }
+    boolean isThis(Entity entity);
 
-    public final boolean isThis(Entity entity) {
-        return id.equals(CustomMob.getCustomType(entity));
-    }
+    EntityType getType();
 
-    public final EntityType getType() {
-        return type;
-    }
+    String getCustomType();
 
-    public final String getCustomType() {
-        return id;
-    }
+    void spawn(Location location);
 
-    public final void spawn(Location loc) {
-        LivingEntity entity = (LivingEntity) loc.getWorld().spawnEntity(loc, type);
-        entity.getPersistentDataContainer().set(KEY, PersistentDataType.STRING, id);
-        setup(entity);
-    }
-
-    public boolean canSpawn(EntityType type, Location loc) {
+    default boolean canSpawn(EntityType type, Location location) {
         return true;
     }
 
-    public abstract void setup(LivingEntity entity);
+    void setup(LivingEntity entity);
 
-    public abstract int getWeight();
+    int getWeight();
 
-    public static boolean isCustomMob(Entity entity) {
-        return entity.getPersistentDataContainer().has(KEY, PersistentDataType.STRING);
+    static boolean isCustomMob(Entity entity) {
+        return entity.getPersistentDataContainer().has(MOB_TYPE_KEY, PersistentDataType.STRING);
     }
 
-    public static String getCustomType(Entity entity) {
-        return isCustomMob(entity) ? entity.getPersistentDataContainer().get(KEY, PersistentDataType.STRING) : null;
+    static String getCustomType(Entity entity) {
+        return entity.getPersistentDataContainer().get(MOB_TYPE_KEY, PersistentDataType.STRING);
     }
-
 }

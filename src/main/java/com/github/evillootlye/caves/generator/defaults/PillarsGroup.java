@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.generator.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.generator.StructureGroup;
+import com.github.evillootlye.caves.generator.AbstractGroup;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,8 +10,7 @@ import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.Random;
 
-@Configurable.Path("generator.structures")
-public class PillarsGroup extends StructureGroup implements Configurable {
+public class PillarsGroup extends AbstractGroup implements Configurable {
     private int weight;
 
     public PillarsGroup() {

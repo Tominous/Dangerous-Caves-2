@@ -1,5 +1,7 @@
-package com.github.evillootlye.caves.mobs;
+package com.github.evillootlye.caves;
 
+import com.github.evillootlye.caves.mobs.AbstractMob;
+import com.github.evillootlye.caves.mobs.MobsManager;
 import com.github.evillootlye.caves.mobs.defaults.AlphaSpider;
 import com.github.evillootlye.caves.mobs.defaults.CryingBat;
 import com.github.evillootlye.caves.mobs.defaults.DeadMiner;
@@ -23,9 +25,9 @@ public enum DefaultMobs {
     DEAD_MINER(new DeadMiner()),
     SMOKE_DEMON(new SmokeDemon());
 
-    private final CustomMob custom;
+    private final AbstractMob custom;
 
-    DefaultMobs(CustomMob mob) {
+    DefaultMobs(AbstractMob mob) {
         this.custom = mob;
     }
 

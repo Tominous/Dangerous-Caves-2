@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.CustomMob;
+import com.github.evillootlye.caves.mobs.AbstractMob;
 import com.github.evillootlye.caves.util.Locations;
 import com.github.evillootlye.caves.util.Materials;
 import com.github.evillootlye.caves.util.Utils;
@@ -19,7 +19,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 @Configurable.Path("mobs.alpha-spider")
-public class AlphaSpider extends CustomMob implements Listener, Configurable {
+public class AlphaSpider extends AbstractMob implements Listener, Configurable {
     private static final PotionEffect POISON = new PotionEffect(PotionEffectType.POISON, 75, 1);
     private static final PotionEffect REGENERATION = new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 0, false, true);
 

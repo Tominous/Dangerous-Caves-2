@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.CustomMob;
+import com.github.evillootlye.caves.mobs.AbstractMob;
 import com.github.evillootlye.caves.util.Utils;
 import com.github.evillootlye.caves.util.random.Rnd;
 import org.bukkit.Location;
@@ -18,7 +18,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 @Configurable.Path("mobs.tnt-creeper")
-public class TNTCreeper extends CustomMob implements Configurable, Listener {
+public class TNTCreeper extends AbstractMob implements Configurable, Listener {
     private static final PotionEffect INCREASE_DAMAGE = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0, false, true);
     private int weight;
     private String name;

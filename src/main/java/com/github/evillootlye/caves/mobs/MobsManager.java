@@ -3,6 +3,9 @@ package com.github.evillootlye.caves.mobs;
 import com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent;
 import com.github.evillootlye.caves.DangerousCaves;
 import com.github.evillootlye.caves.configuration.Configurable;
+import com.github.evillootlye.caves.mobs.tracker.MobTracker;
+import com.github.evillootlye.caves.mobs.tracker.RegisteringTracker;
+import com.github.evillootlye.caves.mobs.tracker.SearchTracker;
 import com.github.evillootlye.caves.ticks.TickLevel;
 import com.github.evillootlye.caves.ticks.Tickable;
 import com.github.evillootlye.caves.util.Locations;
@@ -11,11 +14,8 @@ import com.github.evillootlye.caves.util.random.AliasMethod;
 import com.github.evillootlye.caves.util.random.Rnd;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -31,8 +31,8 @@ import java.util.Set;
 public class MobsManager implements Listener, Tickable, Configurable {
     private final DangerousCaves plugin;
     private final Map<String, CustomMob> mobs;
-    private final Set<String> mobsTicked;
     private final Set<String> worlds;
+    private MobTracker tracker;
     private AliasMethod<CustomMob> mobsPool;
     private int yMin;
     private int yMax;
@@ -48,12 +48,17 @@ public class MobsManager implements Listener, Tickable, Configurable {
         }
         this.plugin = plugin;
         mobs = new HashMap<>();
-        mobsTicked = new HashSet<>();
         worlds = new HashSet<>();
     }
 
     @Override
     public void reload(ConfigurationSection cfg) {
+        if(tracker == null) {
+            if(cfg.getBoolean("alternative-tracker", false))
+                tracker = new RegisteringTracker();
+            else
+                tracker = new SearchTracker();
+        }
         chance = cfg.getDouble("try-chance", 50) / 100;
         blockRename = cfg.getBoolean("restrict-rename", false);
         yMin = cfg.getInt("y-min", 0);
@@ -75,8 +80,8 @@ public class MobsManager implements Listener, Tickable, Configurable {
     public void register(CustomMob mob) {
         if(!mobs.containsKey(mob.getCustomType())) {
             mobs.put(mob.getCustomType(), mob);
-            if(mob instanceof TickableMob)
-                mobsTicked.add(mob.getCustomType());
+            if(mob instanceof TickingMob)
+                tracker.register((TickingMob) mob);
             if(mob instanceof Listener)
                 Bukkit.getPluginManager().registerEvents((Listener)mob, plugin);
             if(mob instanceof Configurable)
@@ -88,18 +93,7 @@ public class MobsManager implements Listener, Tickable, Configurable {
 
     @Override
     public void tick() {
-        for(String worldStr : worlds) {
-            World world = Bukkit.getWorld(worldStr);
-            if(world == null) continue;
-            for(Entity entity : world.getEntities()) {
-                if(!(entity instanceof LivingEntity)) continue;
-                String type = CustomMob.getCustomType(entity);
-                if(type == null) continue;
-                if(mobsTicked.contains(type)) {
-                    ((TickableMob)mobs.get(type)).tick((LivingEntity)entity);
-                }
-            }
-        }
+        tracker.scan(TickingMob::tick);
     }
 
     @Override

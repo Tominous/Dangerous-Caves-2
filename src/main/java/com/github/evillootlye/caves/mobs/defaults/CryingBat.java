@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.TickableMob;
+import com.github.evillootlye.caves.mobs.TickingMob;
 import com.github.evillootlye.caves.util.Utils;
 import com.github.evillootlye.caves.util.random.Rnd;
 import org.bukkit.Sound;
@@ -11,7 +11,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Listener;
 
 @Configurable.Path("mobs.crying-bat")
-public class CryingBat extends TickableMob implements Configurable, Listener {
+public class CryingBat extends TickingMob implements Configurable, Listener {
     private int weight;
     private String name;
     private double cryChance;

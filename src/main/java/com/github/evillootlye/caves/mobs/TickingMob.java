@@ -3,8 +3,8 @@ package com.github.evillootlye.caves.mobs;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 
-public abstract class TickableMob extends CustomMob {
-    public TickableMob(EntityType base, String id) {
+public abstract class TickingMob extends AbstractMob {
+    public TickingMob(EntityType base, String id) {
         super(base, id);
     }
 

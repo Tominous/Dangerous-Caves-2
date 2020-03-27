@@ -1,5 +1,7 @@
-package com.github.evillootlye.caves.generator;
+package com.github.evillootlye.caves;
 
+import com.github.evillootlye.caves.generator.AbstractGroup;
+import com.github.evillootlye.caves.generator.CaveGenerator;
 import com.github.evillootlye.caves.generator.defaults.BouldersGroup;
 import com.github.evillootlye.caves.generator.defaults.BuildingsGroup;
 import com.github.evillootlye.caves.generator.defaults.PillarsGroup;
@@ -11,9 +13,9 @@ public enum DefaultStructures {
     PILLARS(new PillarsGroup()),
     TRAPS(new TrapsGroup());
 
-    private final StructureGroup group;
+    private final AbstractGroup group;
 
-    DefaultStructures(StructureGroup group) {
+    DefaultStructures(AbstractGroup group) {
         this.group = group;
     }
 

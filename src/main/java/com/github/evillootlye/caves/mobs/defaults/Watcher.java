@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.TickableMob;
+import com.github.evillootlye.caves.mobs.TickingMob;
 import com.github.evillootlye.caves.util.Locations;
 import com.github.evillootlye.caves.util.Materials;
 import com.github.evillootlye.caves.util.Utils;
@@ -22,7 +22,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 @Configurable.Path("mobs.watcher")
-public class Watcher extends TickableMob implements Configurable, Listener {
+public class Watcher extends TickingMob implements Configurable, Listener {
     private static final PotionEffect INVISIBILITY = new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0, false, false);
     private static final PotionEffect SLOW = new PotionEffect(PotionEffectType.SLOW, 30, 200);
     private static final PotionEffect BLINDNESS = new PotionEffect(PotionEffectType.BLINDNESS, 80, 2);

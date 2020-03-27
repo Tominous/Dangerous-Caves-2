@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.TickableMob;
+import com.github.evillootlye.caves.mobs.TickingMob;
 import com.github.evillootlye.caves.util.Utils;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 @Configurable.Path("mobs.smoke-demon")
-public class SmokeDemon extends TickableMob implements Configurable {
+public class SmokeDemon extends TickingMob implements Configurable {
     private static final PotionEffect BLINDNESS = new PotionEffect(PotionEffectType.BLINDNESS, 120, 1);
     private static final PotionEffect WITHER = new PotionEffect(PotionEffectType.WITHER, 120, 0);
     private static final PotionEffect INVISIBILITY = new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0, false, false);

@@ -57,7 +57,7 @@ public class CaveGenerator extends BlockPopulator implements Configurable {
             Material material = Material.getMaterial(materialStr.toUpperCase());
             if(material != null) items.add(material);
         }
-        StructureGroup.setItems(items);
+        AbstractGroup.setItems(items);
         if(chance > 0) recalculate();
     }
 
@@ -70,7 +70,7 @@ public class CaveGenerator extends BlockPopulator implements Configurable {
             structuresPool = new AliasMethod<>(structuresSet, StructureGroup::getWeight);
     }
 
-    public void register(StructureGroup group) {
+    public void register(AbstractGroup group) {
         if(!structures.containsKey(group.getId())) {
             structures.put(group.getId(), group);
             if(group instanceof Configurable)

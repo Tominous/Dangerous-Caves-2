@@ -1,8 +1,13 @@
 package com.github.evillootlye.caves.util.random;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Rnd {
+
+    public static <T> T randomItem(List<T> list) {
+        return list.get(Rnd.nextInt(list.size()));
+    }
 
     public static boolean chance(double v) {
         return nextDouble() < v;

@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.CustomMob;
+import com.github.evillootlye.caves.mobs.AbstractMob;
 import com.github.evillootlye.caves.util.PlayerAttackedEvent;
 import com.github.evillootlye.caves.util.Utils;
 import org.bukkit.Location;
@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 @Configurable.Path("mobs.hungering-darkness")
-public class HungeringDarkness extends CustomMob implements Listener, Configurable {
+public class HungeringDarkness extends AbstractMob implements Listener, Configurable {
     private static final PotionEffect INVISIBILITY = new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0, false, false);
     private static final PotionEffect SLOW = new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 3, false, false);
     private int weight;

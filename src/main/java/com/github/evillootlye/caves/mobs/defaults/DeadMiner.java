@@ -1,7 +1,7 @@
 package com.github.evillootlye.caves.mobs.defaults;
 
 import com.github.evillootlye.caves.configuration.Configurable;
-import com.github.evillootlye.caves.mobs.TickableMob;
+import com.github.evillootlye.caves.mobs.TickingMob;
 import com.github.evillootlye.caves.util.Materials;
 import com.github.evillootlye.caves.util.Utils;
 import com.github.evillootlye.caves.util.random.Rnd;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configurable.Path("mobs.dead-miner")
-public class DeadMiner extends TickableMob implements Configurable, Listener {
+public class DeadMiner extends TickingMob implements Configurable, Listener {
     private int weight;
     private String name;
     private boolean torches;

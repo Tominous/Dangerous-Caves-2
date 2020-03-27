@@ -58,7 +58,7 @@ public class AmbientSounds implements Tickable, Configurable {
             for(Player player : world.getPlayers()) {
                 Location loc = player.getLocation();
                 if(loc.getBlockY() <= y && Locations.isCave(loc) && Rnd.chance(chance))
-                    sounds.get(Rnd.nextInt(sounds.size())).play(player);
+                    Rnd.randomItem(sounds).play(player);
             }
         }
     }
