@@ -1,9 +1,9 @@
 package me.imdanix.caves.generator.defaults;
 
 public interface OldStructures {
-    /*int[][][] rock5 = { { {0, 0, 0}, {0, 0, 0}, {0, 0, 0} },
+    int[][][] rock5 = { { {0, 0, 0}, {0, 0, 0}, {0, 0, 0} },
                         {   {0, 0, 0}, {0, 0, 0}, {0, 0, 0} },
-                        {   {0, 0, 0}, {0, 0, 0}, {0, 0, 0} } };*/
+                        {   {0, 0, 0}, {0, 0, 0}, {0, 0, 0} } };
     boolean[][][] rock1 = { { {false, true, false},  {false, true, false},  {false, false, false} },
                             { {false, true, true},   {false, true, false},  {false, true, false} },
                             { {false, false, false}, {false, false, false}, {false, false, false} } };
